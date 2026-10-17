@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-sans: "Kanit", sans-serif;
+  --color-primary: #0a0a0a;
+  --color-primary-content: #ffffff;
+}
+
+:root {
+  --color-primary: #0a0a0a;
+  --color-primary-content: #ffffff;
+}
+
+html,
+body,
+button,
+input,
+optgroup,
+select,
+textarea,
+* {
+  font-family: "Kanit", sans-serif !important;
+}
