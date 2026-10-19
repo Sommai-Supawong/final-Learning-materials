@@ -136,7 +136,7 @@ const LearningResourcePage = () => {
   };
 
   return (
-    <div className="space-y-8 sm:space-y-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 space-y-8 sm:space-y-10">
       {/* 1. Header Hub: Title & Controls */}
       <div className="glass-panel rounded-[32px] sm:rounded-[38px] p-6 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
         <div className="space-y-2">

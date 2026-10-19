@@ -188,7 +188,7 @@ const LearningResourceFormPage = () => {
   }
 
   return (
-    <div className="space-y-8 sm:space-y-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 space-y-8 sm:space-y-10">
       {/* 1. Header Navigation */}
       <div className="flex items-center justify-between">
         <Link

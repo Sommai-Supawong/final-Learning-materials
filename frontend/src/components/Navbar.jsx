@@ -18,9 +18,9 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-3 sm:top-4 z-50 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full transition-all">
+    <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full transition-all pointer-events-none">
       {/* Floating Dynamic Island Capsule */}
-      <nav className="glass-island rounded-full sm:rounded-[28px] px-3.5 sm:px-6 py-2.5 transition-all duration-300">
+      <nav className="glass-island rounded-full sm:rounded-[28px] px-3.5 sm:px-6 py-2.5 transition-all duration-300 pointer-events-auto">
         <div className="flex items-center justify-between">
           {/* Official Logo & Brand */}
           <Link
