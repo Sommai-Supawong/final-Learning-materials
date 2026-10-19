@@ -80,8 +80,9 @@ const LearningResourcePage = () => {
   );
 
   useEffect(() => {
-    fetchData();
-  }, [selectedCategory, fetchData]);
+    fetchData(searchTerm, selectedCategory);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
