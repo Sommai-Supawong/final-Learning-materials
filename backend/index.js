@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./config/database.js";
-import productRouter from "./router/productRouter.js";
-import categoryRouter from "./router/categoryRouter.js";
+import learningResourceRouter from "./router/learningResourceRouter.js";
+import { seedLearningResources } from "./config/seedData.js";
 
 // .env อยู่ข้างนอก
 dotenv.config();
@@ -14,9 +14,10 @@ const PORT = process.env.PORT || process.env.BACKEND_PORT || 5000;
 const app = express();
 
 // Flexible CORS: Allow specific origins from env (CORS_ORIGIN) or allow all by default
-const allowedOrigins = process.env.CORS_ORIGIN
-  ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
-  : "*";
+const allowedOrigins =
+  process.env.CORS_ORIGIN && process.env.CORS_ORIGIN.trim() !== "*"
+    ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
+    : "*";
 
 app.use(
   cors({
@@ -29,11 +30,16 @@ app.use(
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
-connectDB();
+// Connect to Database and Seed Learning Resources
+const initApp = async () => {
+  await connectDB();
+  await seedLearningResources();
+};
+initApp();
 
 // Root & Health Check Endpoints (for Render, Docker, and status monitors)
 app.get("/", (req, res) => {
-  return res.status(200).send("<h1>Product Management API is running</h1>");
+  return res.status(200).send("<h1>Learning Resource Management API is running</h1>");
 });
 
 app.get("/health", (req, res) => {
@@ -54,11 +60,9 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-app.use("/api/products", productRouter);
-app.use("/products", productRouter); // รองรับการเรียกผ่าน /products ตรงๆ ได้ด้วย
-
-app.use("/api/categories", categoryRouter);
-app.use("/categories", categoryRouter);
+// Topic 5: สื่อการเรียนรู้ (Learning Resources)
+app.use("/api/learning-resources", learningResourceRouter);
+app.use("/learning-resources", learningResourceRouter);
 
 // Global JSON Error Handler
 app.use((err, req, res, next) => {

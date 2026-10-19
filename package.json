@@ -1,4 +1,13 @@
 {
+  "name": "final-product-management-1-69",
+  "private": true,
+  "scripts": {
+    "start:backend": "npm --prefix backend start",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:e2e": "npm --prefix frontend run test:e2e"
+  },
   "dependencies": {
     "lucide-react": "^1.53.0"
   }

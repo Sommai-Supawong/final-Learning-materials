@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Plus, Menu, X, Package, Tags, Sparkles } from "lucide-react";
+import { Plus, Menu, X, Sparkles, BookOpen } from "lucide-react";
 
 const Navbar = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Exclusively Learning materials navigation links (Strictly zero product links)
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Products", path: "/products" },
-    { name: "Categories", path: "/categories" },
+    { name: "Showcase (หน้าแรก)", path: "/" },
+    { name: "Manage Resources (จัดการสื่อ)", path: "/learning-resources" },
   ];
 
   const isActive = (path) => {
@@ -18,34 +18,50 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200/80 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo / Brand */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-black text-white flex items-center justify-center font-bold shadow-sm group-hover:scale-105 transition-transform">
-              <Sparkles className="w-5 h-5 text-white" />
+    <header className="sticky top-3 sm:top-4 z-50 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full transition-all">
+      {/* Floating Dynamic Island Capsule */}
+      <nav className="glass-island rounded-full sm:rounded-[28px] px-3.5 sm:px-6 py-2.5 transition-all duration-300">
+        <div className="flex items-center justify-between">
+          {/* Official Logo & Brand */}
+          <Link
+            to="/"
+            id="navbar-brand"
+            className="flex items-center gap-2.5 sm:gap-3 group select-none"
+          >
+            <div className="relative flex items-center justify-center">
+              <img
+                id="navbar-logo-img"
+                src="/logo/LM-logo-small.png"
+                alt="Learning materials Logo"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl object-contain shadow-xs transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-sky-500 rounded-full border-2 border-white animate-pulse"></span>
             </div>
             <div className="flex flex-col">
-              <span className="text-base sm:text-lg font-bold tracking-widest uppercase text-neutral-900 leading-none">
-                Atelier
-              </span>
-              <span className="text-[10px] tracking-wider uppercase text-neutral-400 font-medium mt-0.5">
-                Luxury Essentials
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 leading-none">
+                  Learning materials
+                </span>
+                <span className="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-50 text-sky-700 border border-sky-200/80">
+                  สื่อการเรียนรู้
+                </span>
+              </div>
+              <span className="text-[10px] sm:text-[11px] font-medium text-slate-400 mt-0.5">
+                Topic 5 • Curated Educational Hub
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1 bg-neutral-100/70 p-1.5 rounded-full border border-neutral-200/60">
+          {/* Desktop Segmented Glass Capsule */}
+          <div className="hidden md:flex items-center gap-1 bg-slate-200/50 backdrop-blur-md p-1 rounded-full border border-white/60 shadow-[inset_0_1px_1px_rgba(0,0,0,0.03)]">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 sm:px-5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   isActive(link.path)
-                    ? "bg-white text-black shadow-xs font-semibold"
-                    : "text-neutral-500 hover:text-black hover:bg-white/50"
+                    ? "bg-white text-slate-900 shadow-sm border border-white/90"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-white/40"
                 }`}
               >
                 {link.name}
@@ -56,60 +72,48 @@ const Navbar = () => {
           {/* Right Action Button & Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
-              to="/add"
-              className="btn btn-sm sm:btn-md bg-black hover:bg-neutral-800 text-white border-none rounded-full px-4 sm:px-5 font-medium text-xs sm:text-sm shadow-xs hover:shadow-md transition-all gap-1.5"
+              to="/learning-resources/add"
+              id="navbar-btn-add"
+              className="btn btn-sm btn-tactile bg-slate-900 hover:bg-slate-800 text-white border-none rounded-full px-4 sm:px-5 font-semibold text-xs sm:text-sm shadow-sm transition-all gap-1.5 cursor-pointer h-9 sm:h-10"
             >
-              <Plus className="w-4 h-4" />
-              <span className="hidden sm:inline">Add Product</span>
+              <Plus className="w-3.5 h-3.5 text-white" />
+              <span className="hidden sm:inline">Add Resource (เพิ่มสื่อใหม่)</span>
               <span className="sm:hidden">Add</span>
             </Link>
 
-            {/* Mobile Menu Toggle Button */}
+            {/* Mobile Menu Toggle */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="btn btn-sm btn-ghost btn-circle md:hidden text-neutral-700 hover:bg-neutral-100"
+              className="btn btn-sm btn-ghost btn-circle md:hidden text-slate-700 hover:bg-white/60 rounded-full"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Dropdown Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-neutral-200 bg-white px-4 pt-3 pb-5 space-y-1.5 shadow-lg animate-in fade-in slide-in-from-top-2 duration-150">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                isActive(link.path)
-                  ? "bg-black text-white font-semibold"
-                  : "text-neutral-700 hover:bg-neutral-100"
-              }`}
-            >
-              {link.name === "Home" && <Sparkles className="w-4 h-4" />}
-              {link.name === "Products" && <Package className="w-4 h-4" />}
-              {link.name === "Categories" && <Tags className="w-4 h-4" />}
-              <span>{link.name}</span>
-            </Link>
-          ))}
-          <div className="pt-2 border-t border-neutral-100">
-            <Link
-              to="/add"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-3 bg-neutral-900 text-white rounded-xl text-sm font-medium shadow-xs"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Create New Product</span>
-            </Link>
+        {/* Mobile Dropdown Sheet */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-3 pt-3 border-t border-slate-200/60 space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all ${
+                  isActive(link.path)
+                    ? "bg-slate-900 text-white shadow-xs"
+                    : "text-slate-700 hover:bg-white/60"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
-        </div>
-      )}
-    </nav>
+        )}
+      </nav>
+    </header>
   );
 };
 
