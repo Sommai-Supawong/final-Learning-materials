@@ -10,7 +10,7 @@
 | :--- | :--- | :--- |
 | 🚀 **Live Web Application (Frontend)** | เว็บแอปพลิเคชันที่ Deploy จริงบน Vercel | [https://final-learning-materials.vercel.app/](https://final-learning-materials.vercel.app/) |
 | 🎬 **Video Demonstration (YouTube)** | วิดีโอนำเสนอระบบและการสาธิตฟังก์ชันการทำงาน | [https://youtu.be/nw1R3mcQo2A](https://youtu.be/nw1R3mcQo2A?si=gKj2mg_TElJ-ePBC) |
-| ⚙️ **Backend Service (Render Dashboard)** | เซิร์ฟเวอร์ API บน Render (Service Deploys) | [Render Deployment Dashboard](https://dashboard.render.com/web/srv-dbau6n61egvs73c5h120/deploys) |
+| ⚙️ **Backend Service (Render Dashboard)** | เซิร์ฟเวอร์ API บน Render (Service Deploys) | [Render Deployment Dashboard](https://dashboard.render.com/web/srv-dbau6n61egvs73c5h120/) |
 | 🐘 **Cloud Database (Neon PostgreSQL)** | ฐานข้อมูล Serverless Postgres บน Neon / Vercel Integration | [Neon Storage Guides & Dashboard](https://vercel.com/sommais-projects/~/integrations/neon/icfg_5MvR5HfLLacwjl5xr1hgHCXc/resources/storage/store_enVQppdaTudYi6Wn/guides) |
 
 ---
