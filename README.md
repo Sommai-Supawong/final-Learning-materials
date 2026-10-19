@@ -4,6 +4,17 @@
 
 ---
 
+## 🌐 Live Production & Demonstration Links (ลิงก์ระบบและผลงาน)
+
+| บริการ / ทรัพยากร | รายละเอียด | ลิงก์เข้าใช้งาน (Direct Link) |
+| :--- | :--- | :--- |
+| 🚀 **Live Web Application (Frontend)** | เว็บแอปพลิเคชันที่ Deploy จริงบน Vercel | [https://final-learning-materials.vercel.app/](https://final-learning-materials.vercel.app/) |
+| 🎬 **Video Demonstration (YouTube)** | วิดีโอนำเสนอระบบและการสาธิตฟังก์ชันการทำงาน | [https://youtu.be/nw1R3mcQo2A](https://youtu.be/nw1R3mcQo2A?si=gKj2mg_TElJ-ePBC) |
+| ⚙️ **Backend Service (Render Dashboard)** | เซิร์ฟเวอร์ API บน Render (Service Deploys) | [Render Deployment Dashboard](https://dashboard.render.com/web/srv-dbau6n61egvs73c5h120/deploys) |
+| 🐘 **Cloud Database (Neon PostgreSQL)** | ฐานข้อมูล Serverless Postgres บน Neon / Vercel Integration | [Neon Storage Guides & Dashboard](https://vercel.com/sommais-projects/~/integrations/neon/icfg_5MvR5HfLLacwjl5xr1hgHCXc/resources/storage/store_enVQppdaTudYi6Wn/guides) |
+
+---
+
 ## 1. Project Title & Description (บทนำและรายละเอียดโครงการ)
 ระบบบริหารจัดการสื่อการเรียนรู้ (**Learning materials - Topic 5 / ชุดที่ 5 สื่อการเรียนรู้**) ถูกพัฒนาขึ้นเพื่อใช้เป็นแพลตฟอร์มการจัดการและเผยแพร่สื่อดิจิทัล ได้แก่ บทความวิชาการ (Articles), วิดีโอบรรยาย (Videos) และแบบฝึกหัดทบทวน (Worksheets) 
 
@@ -107,28 +118,33 @@ npm run dev
 
 ---
 
-## 6. Cloud Deployment Guide (แนวทางการนำขึ้นคลาวด์)
+## 6. Cloud Deployment Guide & Service Links (แนวทางการนำขึ้นคลาวด์และลิงก์บริการ)
 
-### 6.1 Backend Deployment (Render.com)
-1. เชื่อมต่อ Git Repository บน Render แล้วเลือกสร้าง **Web Service**
-2. ตั้งค่า Root Directory: `backend`
-3. Environment: `Node`
-4. Build Command: `npm install`
-5. Start Command: `node index.js`
-6. กำหนด Environment Variables บน Render Dashboard:
-   - `NODE_ENV=production`
-   - `PORT=5000`
-   - `DATABASE_URL=postgresql://neondb_owner:npg_2g8oQmKsklzY@ep-dry-violet-a10xuzof-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require`
-   - `DB_SSL=true`
-   - `CORS_ORIGIN=*` (หรือกำหนดเป็น URL ของ Vercel Frontend เช่น `https://final-product-management.vercel.app`)
+### 6.1 Frontend Deployment (Vercel)
+- **Live URL:** [https://final-learning-materials.vercel.app/](https://final-learning-materials.vercel.app/)
+- **Repository Root Directory:** `frontend`
+- **Framework Preset:** `Vite`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+- **Environment Variable:**
+  - `VITE_API_URL=https://<your-render-backend-url>.onrender.com`
 
-### 6.2 Frontend Deployment (Vercel)
-1. เชื่อมต่อ Git Repository บน Vercel แล้วเลือก Root Directory: `frontend`
-2. Framework Preset: `Vite`
-3. Build Command: `npm run build`
-4. Output Directory: `dist`
-5. กำหนด Environment Variable:
-   - `VITE_API_URL=https://<your-render-backend-url>.onrender.com`
+### 6.2 Backend Deployment (Render.com)
+- **Service Deployment Dashboard:** [Render Web Service srv-dbau6n61egvs73c5h120](https://dashboard.render.com/web/srv-dbau6n61egvs73c5h120/deploys)
+- **Root Directory:** `backend`
+- **Environment:** `Node`
+- **Build Command:** `npm install`
+- **Start Command:** `node index.js` (หรือ `npm start`)
+- **Environment Variables:**
+  - `NODE_ENV=production`
+  - `PORT=5000`
+  - `DATABASE_URL=postgresql://neondb_owner:npg_2g8oQmKsklzY@ep-dry-violet-a10xuzof-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require`
+  - `DB_SSL=true`
+  - `CORS_ORIGIN=*` (หรือ `https://final-learning-materials.vercel.app`)
+
+### 6.3 Serverless Database (Neon PostgreSQL via Vercel Integration)
+- **Neon Management & Storage Guide:** [Neon Storage Guides & Integration](https://vercel.com/sommais-projects/~/integrations/neon/icfg_5MvR5HfLLacwjl5xr1hgHCXc/resources/storage/store_enVQppdaTudYi6Wn/guides)
+- **Database Engine:** PostgreSQL 16 (Serverless with Auto-Scaling & Connection Pooling)
 
 ---
 
